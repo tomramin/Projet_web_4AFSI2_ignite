@@ -7,18 +7,18 @@
     </v-app-bar>
 
     <v-content>
-      <ToDo/>
+      <Ignite/>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import ToDo from './components/ToDo'
+import Ignite from './components/Ignite'
 
 export default {
   name: 'App',
   components: {
-    ToDo
+    Ignite
   },
   data: () => ({
     //
