@@ -10,7 +10,6 @@ const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const cors = require('cors')
 const session = require('express-session')
-const path = require('express-session')
 
 const app = express()
 
@@ -23,11 +22,12 @@ app.use(session({
 app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(cors())
+const path = require('path')
 app.use(express.static(path.join(__dirname, 'dist/')))
 
 const users = [{
   username: 'admin',
-  password: 'changethispassword'
+  password: 'admin'
 }]
 
 app.get('/api/test', (req, res) => {
@@ -50,6 +50,9 @@ app.post('/api/login', (req, res) => {
     const user = users.find(u => u.username === req.body.username && u.password === req.body.password)
     if (!user) {
       // gérez le cas où on n'a pas trouvé d'utilisateur correspondant
+      res.json({
+        message: "this user doesn't exist"
+      })
     } else {
       // connect the user
       req.session.userId = 1000 // connect the user, and change the id

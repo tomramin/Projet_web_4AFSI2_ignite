@@ -9,10 +9,10 @@
             </v-col>
 
             <v-col cols="12" md="4">
-              <v-text-field v-model="description" label="Description" required></v-text-field>
+              <v-text-field v-model="password" label="Password" type="password" required></v-text-field>
             </v-col>
           </v-row>
-          <v-btn @click="addElement">Ajouter</v-btn>
+          <v-btn @click="addElement">Inscription</v-btn>
           <v-btn @click="login">Connexion</v-btn>
         </v-container>
       </v-form>
@@ -38,19 +38,18 @@ export default {
   data: () => ({
     valid: false,
     name: '',
-    description: '',
+    password: '',
+    server: 'http://localhost:4000/',
     todos: []
   }),
   methods: {
-    login () {
+    async login () {
       // connecter l'utilisateur
-      this.axios.post('http://localhost:4000/api/login', {
-        data: {
-          login: 'tom',
-          password: 'ramin'
-        }
+      const resp = await this.axios.post(this.server + 'api/login', {
+        username: this.name,
+        password: this.password
       })
-        .then(jsondata => console.log('response is:', jsondata))
+      console.log(resp)
     },
     logout () {
     },
