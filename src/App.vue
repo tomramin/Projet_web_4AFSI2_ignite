@@ -8,20 +8,17 @@
 
     <v-content>
       <Login/>
-      <Ignite/>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import Ignite from './components/Ignite'
 import Login from './components/Login'
 
 export default {
   name: 'App',
   components: {
-    Login,
-    Ignite
+    Login
   },
   data: () => ({
     //
