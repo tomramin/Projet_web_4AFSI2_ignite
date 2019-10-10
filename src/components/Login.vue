@@ -19,17 +19,16 @@
         <h2>Create login</h2>
         <div>Use your email for registration</div>
         <input type="text" placeholder="Name" />
-        <input type="email" placeholder="Email" />
         <input type="password" placeholder="Password" />
         <button>Sign Up</button>
       </form>
       <form class="sign-in" action="#">
         <h2>Sign In</h2>
         <div>Use your account</div>
-        <input type="email" placeholder="Email" />
+        <input type="text" placeholder="Name" />
         <input type="password" placeholder="Password" />
         <a href="#">Forgot your password?</a>
-        <button>Sign In</button>
+        <button @click="login">Sign In</button>
       </form>
     </div>
   </article>
@@ -37,9 +36,22 @@
 
 <script>
 export default {
-  data: () => {
-    return {
-      signUp: false
+  data: () => ({
+    signUp: false,
+    name: '',
+    password: '',
+    server: 'http://localhost:4000/'
+  }),
+  methods: {
+    async login () {
+      // connecter l'utilisateur
+      const resp = await this.axios.post(this.server + 'api/login', {
+        username: this.name,
+        password: this.password
+      })
+      console.log(resp)
+    },
+    logout () {
     }
   }
 }
