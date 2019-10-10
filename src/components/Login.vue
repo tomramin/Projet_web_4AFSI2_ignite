@@ -28,7 +28,7 @@
         <input type="text" placeholder="Name" />
         <input type="password" placeholder="Password" />
         <a href="#">Forgot your password?</a>
-        <button @click="login">Sign In</button>
+        <button @click="login" >Sign In</button>
       </form>
     </div>
   </article>
