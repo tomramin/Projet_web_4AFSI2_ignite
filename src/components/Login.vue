@@ -17,16 +17,15 @@
       </div>
       <form class="sign-up" action="#">
         <h2>Create login</h2>
-        <div>Use your email for registration</div>
-        <input type="text" placeholder="Name" />
+        <input type="name" placeholder="Name" />
         <input type="password" placeholder="Password" />
         <button>Sign Up</button>
       </form>
       <form class="sign-in" action="#">
         <h2>Sign In</h2>
         <div>Use your account</div>
-        <input type="text" placeholder="Name" />
-        <input type="password" placeholder="Password" />
+        <input v-model="name" placeholder="Name" />
+        <input v-model="password" type="password" placeholder="Password" />
         <a href="#">Forgot your password?</a>
         <button @click="login" >Sign In</button>
       </form>
