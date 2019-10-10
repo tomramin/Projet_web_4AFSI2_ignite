@@ -7,6 +7,7 @@
     </v-app-bar>
 
     <v-content>
+      <Login/>
       <Ignite/>
     </v-content>
   </v-app>
@@ -14,10 +15,12 @@
 
 <script>
 import Ignite from './components/Ignite'
+import Login from './components/Login'
 
 export default {
   name: 'App',
   components: {
+    Login,
     Ignite
   },
   data: () => ({
