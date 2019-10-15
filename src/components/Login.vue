@@ -41,7 +41,7 @@
       </v-container>
     </v-content>
     <v-content>
-      <v-container class="playContainer" text-center v-if="playing">
+      <v-container class="playContainer" text-center v-if="connected && playing">
         <p>ouais viens on joue</p>
         <p>ouiiiii</p>
       </v-container>
