@@ -33,14 +33,13 @@
       </v-container>
     </v-content>
     <v-content>
-      <v-btn class="logout_btn" @click="logout" v-if="connected">Log Out</v-btn>
-      <v-container class="welcomeContainer" text-center v-if="connected && !playing">
+      <v-container class="welcomeContainer" text-center v-if="connected && !playing"  >
         <p>Bienvenue {{name}}</p>
         <p>Cliquez pour jouer</p>
         <button @click="play">JOUER</button>
       </v-container>
     </v-content>
-        <v-content>
+    <v-content>
       <v-container class="playContainer" text-center v-if="playing">
         <p>ouais viens on joue</p>
         <p>ouiiiii</p>
@@ -54,6 +53,7 @@ export default {
   data: () => ({
     signUp: false,
     connected: false,
+    playing: false,
     name: '',
     password: '',
     server: 'http://localhost:4000/',
@@ -93,6 +93,9 @@ export default {
       if (this.message === 'connected') {
         this.connected = false
       }
+    },
+    async play () {
+      this.playing = true
     }
   }
 }
@@ -269,6 +272,17 @@ export default {
     }
   }
   .welcomeContainer {
+    width: 384px;
+    height: 240px;
+    color: #fff;
+    background: linear-gradient(to top right, rgb(247, 93, 93), #930000);
+     font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 40px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .playContainer {
     width: 384px;
     height: 240px;
     color: #fff;
