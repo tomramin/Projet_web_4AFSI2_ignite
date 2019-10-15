@@ -34,8 +34,16 @@
     </v-content>
     <v-content>
       <v-btn class="logout_btn" @click="logout" v-if="connected">Log Out</v-btn>
-      <v-container class="welcomeContainer" text-center v-if="connected">
+      <v-container class="welcomeContainer" text-center v-if="connected && !playing">
         <p>Bienvenue {{name}}</p>
+        <p>Cliquez pour jouer</p>
+        <button @click="play">JOUER</button>
+      </v-container>
+    </v-content>
+        <v-content>
+      <v-container class="playContainer" text-center v-if="playing">
+        <p>ouais viens on joue</p>
+        <p>ouiiiii</p>
       </v-container>
     </v-content>
   </article>
