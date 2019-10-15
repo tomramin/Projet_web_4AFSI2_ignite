@@ -30,7 +30,6 @@
             <a href="#">Forgot your password?</a>
             <button @click="login">Sign In</button>
           </form>
-        </div>
       </v-container>
     </v-content>
     <v-content>
