@@ -85,6 +85,12 @@ app.post('/api/inscription', (req, res) => {
   }
 })
 
+app.post('/api/playing', (req, res) => {
+  res.json({
+    message: 'playing ...'
+  })
+})
+
 app.get('/api/logout', (req, res) => {
   if (!req.session.userId) {
     res.status(401)
