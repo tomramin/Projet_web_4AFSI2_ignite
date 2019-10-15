@@ -82,7 +82,7 @@ export default {
       left: -100%;
       height: 100%;
       width: 200%;
-      background: linear-gradient(to bottom right, rgb(247, 93, 93), #930000);
+      background: linear-gradient(to top right, rgb(247, 93, 93), #930000);
       color: #fff;
       transform: translateX(0);
       transition: transform .5s ease-in-out;
