@@ -1,8 +1,7 @@
 <template>
   <article>
     <v-content>
-      <v-container v-if="!connected">
-        <div class="container" :class="{'sign-up-active' : signUp}">
+      <v-container v-if="!connected" class="container" :class="{'sign-up-active' : signUp}">
           <div class="overlay-container">
             <div class="overlay">
               <div class="overlay-left">
