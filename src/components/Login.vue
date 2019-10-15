@@ -33,7 +33,7 @@
       </v-container>
     </v-content>
     <v-content>
-      <v-container class="welcomeContainer" text-center v-if="connected" >
+      <v-container class="welcomeContainer" text-center v-if="connected && !playing"  >
         <p>Bienvenue {{name}}</p>
         <p>Cliquez pour jouer</p>
         <button @click="play">JOUER</button>
