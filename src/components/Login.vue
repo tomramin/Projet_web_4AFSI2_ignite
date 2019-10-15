@@ -33,8 +33,9 @@
       </v-container>
     </v-content>
     <v-content>
-      <v-container text-center v-if="connected">
+      <v-container class="welcomeContainer" text-center v-if="connected">
         <p>Bienvenue {{name}}</p>
+        <p>Sans vouloir me vanter, je crois que c'est lourd</p>
       </v-container>
     </v-content>
   </article>
@@ -243,5 +244,16 @@ export default {
       opacity: 1;
       z-index: 10;
     }
+  }
+  .welcomeContainer {
+    width: 384px;
+    height: 240px;
+    color: #fff;
+    background: linear-gradient(to top right, rgb(247, 93, 93), #930000);
+     font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 40px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
   }
 </style>
