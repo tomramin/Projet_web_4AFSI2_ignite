@@ -68,6 +68,23 @@ app.post('/api/login', (req, res) => {
   }
 })
 
+app.post('/api/inscription', (req, res) => {
+  const user = users.find(u => u.username === req.body.username && u.password === req.body.password)
+  if (!user) {
+    users.push({
+      username: req.body.username,
+      password: req.body.password
+    })
+    res.json({
+      message: 'utilisateur bien crée'
+    })
+  } else {
+    res.json({
+      message: 'utilisateur déjà crée'
+    })
+  }
+})
+
 app.get('/api/logout', (req, res) => {
   if (!req.session.userId) {
     res.status(401)

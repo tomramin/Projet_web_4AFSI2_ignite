@@ -17,9 +17,9 @@
       </div>
       <form class="sign-up" action="#">
         <h2>Create login</h2>
-        <input type="name" placeholder="Name" />
-        <input type="password" placeholder="Password" />
-        <button>Sign Up</button>
+        <input v-model="name" placeholder="Name" />
+        <input v-model="password" type="password" placeholder="Password" />
+        <button @click="inscription">Sign Up</button>
       </form>
       <form class="sign-in" action="#">
         <h2>Sign In</h2>
@@ -50,7 +50,13 @@ export default {
       })
       console.log(resp)
     },
-    logout () {
+    async inscription () {
+    // s'inscrire
+      const resp = await this.axios.post(this.server + 'api/inscription', {
+        username: this.name,
+        password: this.password
+      })
+      console.log(resp)
     }
   }
 }
