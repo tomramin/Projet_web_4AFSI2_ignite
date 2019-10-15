@@ -27,7 +27,7 @@
         <input v-model="name" placeholder="Name" />
         <input v-model="password" type="password" placeholder="Password" />
         <a href="#">Forgot your password?</a>
-        <button @click="login" >Sign In</button>
+        <button @click="login">Sign In</button>
       </form>
     </div> <v-content>
     <v-container text-center v-if="connected">
@@ -97,7 +97,7 @@ export default {
       left: -100%;
       height: 100%;
       width: 200%;
-      background: linear-gradient(to bottom right, rgb(247, 93, 93), #930000);
+      background: linear-gradient(to top right, rgb(247, 93, 93), #930000);
       color: #fff;
       transform: translateX(0);
       transition: transform .5s ease-in-out;
