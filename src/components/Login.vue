@@ -29,7 +29,11 @@
         <a href="#">Forgot your password?</a>
         <button @click="login" >Sign In</button>
       </form>
-    </div>
+    </div> <v-content>
+    <v-container text-center v-if="connected">
+        <p>Bienvenue {{name}}</p>
+    </v-container>
+  </v-content>
   </article>
 </template>
 
@@ -37,6 +41,7 @@
 export default {
   data: () => ({
     signUp: false,
+    connected: false,
     name: '',
     password: '',
     server: 'http://localhost:4000/'
@@ -49,6 +54,10 @@ export default {
         password: this.password
       })
       console.log(resp)
+      this.message = resp.data.message
+      if (this.message === 'connected') {
+        this.connected = true
+      }
     },
     async inscription () {
     // s'inscrire
