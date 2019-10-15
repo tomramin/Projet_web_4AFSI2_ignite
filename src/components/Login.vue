@@ -33,9 +33,9 @@
       </v-container>
     </v-content>
     <v-content>
+      <v-btn class="logout_btn" @click="logout" v-if="connected">Log Out</v-btn>
       <v-container class="welcomeContainer" text-center v-if="connected">
         <p>Bienvenue {{name}}</p>
-        <p>Sans vouloir me vanter, je crois que c'est lourd</p>
       </v-container>
     </v-content>
   </article>
@@ -48,7 +48,8 @@ export default {
     connected: false,
     name: '',
     password: '',
-    server: 'http://localhost:4000/'
+    server: 'http://localhost:4000/',
+    inscrip: false
   }),
   methods: {
     async login () {
@@ -67,9 +68,23 @@ export default {
     // s'inscrire
       const resp = await this.axios.post(this.server + 'api/inscription', {
         username: this.name,
+        password: this.password,
+        inscrip: true
+      })
+      alert('Vous etes inscrit')
+      console.log(resp)
+    },
+    async logout () {
+      // connecter l'utilisateur
+      const resp = await this.axios.post(this.server + 'api/login', {
+        username: this.name,
         password: this.password
       })
       console.log(resp)
+      this.message = resp.data.message
+      if (this.message === 'connected') {
+        this.connected = false
+      }
     }
   }
 }
@@ -257,3 +272,5 @@ export default {
     text-transform: uppercase;
   }
 </style>
+
+<style></style>
