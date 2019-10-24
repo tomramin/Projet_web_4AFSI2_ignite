@@ -71,6 +71,8 @@ export default {
       this.message = resp.data.message
       if (this.message === 'connected') {
         this.connected = true
+      } else {
+        alert('name or password are incorrect')
       }
     },
     async inscription () {
@@ -80,23 +82,15 @@ export default {
         password: this.password,
         inscrip: true
       })
-      alert('Vous etes inscrit')
       console.log(resp)
-    },
-    async logout () {
-      // connecter l'utilisateur
-      const resp = await this.axios.post(this.server + 'api/login', {
-        username: this.name,
-        password: this.password
-      })
-      console.log(resp)
-      this.message = resp.data.message
-      if (this.message === 'connected') {
-        this.connected = false
-      }
     },
     async play () {
       this.playing = true
+    },
+    async logout () {
+      this.axios.post(this.server + 'api/logout', this.connected = false)
+      sessionStorage.clear()
+      this.playing = false
     }
   }
 }
@@ -295,5 +289,3 @@ export default {
     text-transform: uppercase;
   }
 </style>
-
-<style></style>
