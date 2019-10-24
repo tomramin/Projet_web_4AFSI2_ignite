@@ -41,8 +41,23 @@
     </v-content>
     <v-content>
       <v-container class="playContainer" text-center v-if="playing">
-        <p>ouais viens on joue</p>
-        <p>ouiiiii</p>
+        <div v-if="index >= 0 && index < jeu.length">
+          <p> </p>
+          <h1> {{jeu[index].question}} </h1>
+          <p> </p>
+          <ol>
+            <li> {{jeu[index].reponses[0]}} </li>
+            <li> {{jeu[index].reponses[1]}} </li>
+            <li> {{jeu[index].reponses[2]}} </li>
+          </ol>
+        </div>
+        <input v-if="index < jeu.length" v-model="choix" placeholder="Votre réponse">
+        <button v-if="(index+1) < jeu.length" @click="questionSuivante"> VALIDER </button>
+        <button v-if="(index+1) === jeu.length" @click="questionSuivante"> FIN </button>
+        <div v-if="index === 2">
+          <p> Merci d'avoir joué </p>
+          <p> Votre score est de: {{score}} </p>
+        </div>
       </v-container>
     </v-content>
   </article>
@@ -56,7 +71,15 @@ export default {
     playing: false,
     name: '',
     password: '',
-    server: 'http://localhost:4000/'
+    server: 'http://localhost:4000/',
+    index: 0,
+    score: 0,
+    choix: null,
+    jeu: [
+      { question: "Choisis l'intrus", reponses: ["McDonald's", 'Quick', 'Burger King'] },
+      { question: "Choisis l'intrus", reponses: ['Adidas', 'Nike', 'Hollister'] }
+    ],
+    solutions: ['Quick', 'Hollister']
   }),
   methods: {
     async login () {
@@ -81,6 +104,16 @@ export default {
     },
     async play () {
       this.playing = true
+    },
+    async questionSuivante () {
+      if (this.choix === this.solutions[this.index]) {
+        this.score++
+      } else { console.log('mauvaise réponse') }
+      this.index++
+      this.choix = null
+      if (this.index > Object.keys(this.jeu).length) {
+        this.index = 0
+      }
     }
   }
 }
