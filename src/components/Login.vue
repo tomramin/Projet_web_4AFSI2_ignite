@@ -5,13 +5,13 @@
           <div class="overlay-container">
             <div class="overlay">
               <div class="overlay-left">
-                <img src="../assets/logo.png">
+                <img src="../assets/MajinVegeta.png">
                 <h2>Welcome Back!</h2>
                 <p>Please login with your personal info</p>
                 <button class="invert" id="signIn" @click="signUp = !signUp">Sign In</button>
               </div>
               <div class="overlay-right">
-    <!--<img src="../assets/gokuUI.png">-->
+    <img src="../assets/gokuUI.png">
                 <h2>Hello, Friend!</h2>
                 <p>Please enter your personal details</p>
                 <button class="invert" id="signUp" @click="signUp = !signUp">Sign Up</button>
