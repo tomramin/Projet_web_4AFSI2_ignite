@@ -5,13 +5,13 @@
           <div class="overlay-container">
             <div class="overlay">
               <div class="overlay-left">
-                <img src="../assets/MajinVegeta.png">
+                <img id="img1" src="../assets/MajinVegeta.png">
                 <h2>Welcome Back!</h2>
                 <p>Please login with your personal info</p>
                 <button class="invert" id="signIn" @click="signUp = !signUp">Sign In</button>
               </div>
               <div class="overlay-right">
-    <img src="../assets/gokuUI.png">
+                <img id="img2" src="../assets/gokuUI.png">
                 <h2>Hello, Friend!</h2>
                 <p>Please enter your personal details</p>
                 <button class="invert" id="signUp" @click="signUp = !signUp">Sign Up</button>
@@ -328,5 +328,13 @@ export default {
     padding: 10px 40px;
     letter-spacing: 1px;
     text-transform: uppercase;
+  }
+  #img1 {
+    max-width: 70%;
+    max-height: 70%;
+  }
+  #img2 {
+    max-width: 70%;
+    max-height: 70%;
   }
 </style>
