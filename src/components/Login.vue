@@ -42,19 +42,21 @@
     <v-content>
       <v-container class="playContainer" text-center v-if="playing">
         <div v-if="index >= 0 && index < jeu.length">
-          <p> </p>
+          <br>
           <h1> {{jeu[index].question}} </h1>
-          <p> </p>
+          <br>
           <ol>
             <li> {{jeu[index].reponses[0]}} </li>
             <li> {{jeu[index].reponses[1]}} </li>
             <li> {{jeu[index].reponses[2]}} </li>
           </ol>
+          <br>
         </div>
-        <input v-if="index < jeu.length" v-model="choix" placeholder="Votre réponse">
+        <input v-if="index < jeu.length" v-model="choix" placeholder=" Indice de votre réponse">
+        <div><br></div>
         <button v-if="(index+1) < jeu.length" @click="questionSuivante"> VALIDER </button>
         <button v-if="(index+1) === jeu.length" @click="questionSuivante"> FIN </button>
-        <div v-if="index === 2">
+        <div v-if="index === 5">
           <p> Merci d'avoir joué </p>
           <p> Votre score est de: {{score}} </p>
         </div>
@@ -76,10 +78,13 @@ export default {
     score: 0,
     choix: null,
     jeu: [
-      { question: "Choisis l'intrus", reponses: ["McDonald's", 'Quick', 'Burger King'] },
-      { question: "Choisis l'intrus", reponses: ['Adidas', 'Nike', 'Hollister'] }
+      { question: "Choisis l'intrus (écris l'indice de la réponse de ton choix)", reponses: ['Goku', 'Vegeta', 'Gohan'] },
+      { question: "Choisis l'intrus (écris l'indice de la réponse de ton choix)", reponses: ['Raditz', 'Bardock', 'Broly'] },
+      { question: "Choisis l'intrus (écris l'indice de la réponse de ton choix)", reponses: ['Vegeto', 'Gogeta', 'Gotenks'] },
+      { question: "Choisis l'intrus (écris l'indice de la réponse de ton choix)", reponses: ['C-16', 'C-17', 'C-18'] },
+      { question: "Choisis l'intrus (écris l'indice de la réponse de ton choix)", reponses: ['Jiren', 'Toppo', 'Freezer'] }
     ],
-    solutions: ['Quick', 'Hollister']
+    solutions: ['3', '3', '1', '1', '3']
   }),
   methods: {
     async login () {
@@ -301,8 +306,8 @@ export default {
     text-transform: uppercase;
   }
   .playContainer {
-    width: 384px;
-    height: 240px;
+    width: 400px;
+    height: 400px;
     color: #fff;
     background: linear-gradient(to top right, rgb(247, 93, 93), #930000);
      font-size: 1rem;
