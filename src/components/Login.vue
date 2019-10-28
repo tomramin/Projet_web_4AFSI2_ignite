@@ -120,6 +120,8 @@ export default {
       this.axios.post(this.server + 'api/logout', this.connected = false)
       sessionStorage.clear()
       this.playing = false
+      this.index = 0
+      this.score = 0
     },
     async questionSuivante () {
       if (this.choix === this.solutions[this.index]) {
