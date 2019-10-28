@@ -30,6 +30,19 @@ const users = [{
   password: 'admin'
 }]
 
+app.get('/api/test', (req, res) => {
+  console.log('ce console.log est appelé au bon moment')
+  res.json([
+    {
+      title: 'truc',
+      content: 'machin'
+    }, {
+      title: 'truc2',
+      content: 'machin2'
+    }
+  ])
+})
+
 app.post('/api/login', (req, res) => {
   console.log('req.body', req.body)
   console.log('req.query', req.query)
@@ -71,6 +84,16 @@ app.post('/api/inscription', (req, res) => {
     })
   }
 })
+app.post('/api/playing', (req, res) => {
+  res.json({
+    message: 'playing ...'
+  })
+})
+app.post('/api/playing', (req, res) => {
+  res.json({
+    message: 'playing ...'
+  })
+})
 
 app.post('/api/playing', (req, res) => {
   res.json({
@@ -78,17 +101,10 @@ app.post('/api/playing', (req, res) => {
   })
 })
 
-app.get('/api/logout', (req, res) => {
-  if (!req.session.userId) {
-    res.status(401)
-    res.json({
-      message: 'you are already disconnected'
-    })
-  } else {
-    req.session.userId = 0
-    res.json({
-      message: 'you are now disconnected'
-    })
+app.post('/api/logout', (req, res) => {
+  req.session.destroy()
+  if (!req.session) {
+    console.log('you are disconnected')
   }
 })
 

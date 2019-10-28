@@ -5,11 +5,13 @@
           <div class="overlay-container">
             <div class="overlay">
               <div class="overlay-left">
+                <img src="../assets/.png">
                 <h2>Welcome Back!</h2>
                 <p>Please login with your personal info</p>
                 <button class="invert" id="signIn" @click="signUp = !signUp">Sign In</button>
               </div>
               <div class="overlay-right">
+    <img src="../assets/gokuUI.png">
                 <h2>Hello, Friend!</h2>
                 <p>Please enter your personal details</p>
                 <button class="invert" id="signUp" @click="signUp = !signUp">Sign Up</button>
@@ -33,6 +35,7 @@
       </v-container>
     </v-content>
     <v-content>
+      <v-btn class="logout_btn" @click="logout" v-if="connected">Log Out</v-btn>
       <v-container class="welcomeContainer" text-center v-if="connected && !playing"  >
         <p>Bienvenue {{name}}</p>
         <p>Cliquez pour jouer</p>
@@ -97,28 +100,26 @@ export default {
       this.message = resp.data.message
       if (this.message === 'connected') {
         this.connected = true
+      } else {
+        alert('name or password are incorrect')
       }
     },
     async inscription () {
     // s'inscrire
       const resp = await this.axios.post(this.server + 'api/inscription', {
         username: this.name,
-        password: this.password
+        password: this.password,
+        inscrip: true
       })
       console.log(resp)
     },
     async play () {
       this.playing = true
     },
-    async questionSuivante () {
-      if (this.choix === this.solutions[this.index]) {
-        this.score++
-      } else { console.log('mauvaise réponse') }
-      this.index++
-      this.choix = null
-      if (this.index > Object.keys(this.jeu).length) {
-        this.index = 0
-      }
+    async logout () {
+      this.axios.post(this.server + 'api/logout', this.connected = false)
+      sessionStorage.clear()
+      this.playing = false
     }
   }
 }
