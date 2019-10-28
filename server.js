@@ -89,17 +89,6 @@ app.post('/api/playing', (req, res) => {
     message: 'playing ...'
   })
 })
-app.post('/api/playing', (req, res) => {
-  res.json({
-    message: 'playing ...'
-  })
-})
-
-app.post('/api/playing', (req, res) => {
-  res.json({
-    message: 'playing ...'
-  })
-})
 
 app.post('/api/logout', (req, res) => {
   req.session.destroy()

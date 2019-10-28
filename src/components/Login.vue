@@ -5,13 +5,13 @@
           <div class="overlay-container">
             <div class="overlay">
               <div class="overlay-left">
-                <img src="../assets/.png">
+                <img src="../assets/logo.png">
                 <h2>Welcome Back!</h2>
                 <p>Please login with your personal info</p>
                 <button class="invert" id="signIn" @click="signUp = !signUp">Sign In</button>
               </div>
               <div class="overlay-right">
-    <img src="../assets/gokuUI.png">
+    <!--<img src="../assets/gokuUI.png">-->
                 <h2>Hello, Friend!</h2>
                 <p>Please enter your personal details</p>
                 <button class="invert" id="signUp" @click="signUp = !signUp">Sign Up</button>
@@ -120,6 +120,16 @@ export default {
       this.axios.post(this.server + 'api/logout', this.connected = false)
       sessionStorage.clear()
       this.playing = false
+    },
+    async questionSuivante () {
+      if (this.choix === this.solutions[this.index]) {
+        this.score++
+      } else { console.log('mauvaise reponse') }
+      this.index++
+      this.choix = null
+      if (this.index > Object.keys(this.jeu).length) {
+        this.index = 0
+      }
     }
   }
 }
