@@ -29,19 +29,20 @@
             <div>Use your account</div>
             <input v-model="name" placeholder="Name" />
             <input v-model="password" type="password" placeholder="Password" />
-            <a href="#">Forgot your password?</a>
             <button @click="login">Sign In</button>
           </form>
       </v-container>
     </v-content>
+
     <v-content>
       <v-btn class="logout_btn" @click="logout" v-if="connected">Log Out</v-btn>
-      <v-container class="welcomeContainer" text-center v-if="connected && !playing"  >
+      <v-container class="welcomeContainer" text-center v-if="connected && !playing" >
         <p>Bienvenue {{name}}</p>
         <p>Cliquez pour jouer</p>
         <button @click="play">JOUER</button>
       </v-container>
     </v-content>
+
     <v-content>
       <v-container class="playContainer" text-center v-if="playing">
         <div v-if="index >= 0 && index < jeu.length">
@@ -65,6 +66,7 @@
         </div>
       </v-container>
     </v-content>
+
   </article>
 </template>
 
@@ -139,14 +141,15 @@ export default {
 
 <style lang="scss" scoped>
   .container {
+    opacity: 97%;
     margin-top: 5%;
     position: relative;
-    width: 768px;
-    height: 480px;
-    border-radius: 10px;
+    width: 614px;
+    height: 384px;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, .2),
-                0 10px 10px rgba(0, 0, 0, .2);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, .2),
+                0 8px 8px rgba(0, 0, 0, .2);
     background: linear-gradient(to bottom, #efefef, #ccc);
     .overlay-container {
       position: absolute;
@@ -163,7 +166,7 @@ export default {
       left: -100%;
       height: 100%;
       width: 200%;
-      background: linear-gradient(to top right, rgb(247, 93, 93), #930000);
+      background: linear-gradient(to top right, rgb(111, 247, 93), #009300);
       color: #fff;
       transform: translateX(0);
       transition: transform .5s ease-in-out;
@@ -175,7 +178,7 @@ export default {
       align-items: center;
       justify-content: space-around;
       flex-direction: column;
-      padding: 70px 40px;
+      padding: 56px 32px;
       width: calc(50%);
       height: calc(100%);
       text-align: center;
@@ -194,22 +197,16 @@ export default {
     margin: 0;
   }
   p {
-    margin: 20px 0 30px;
-  }
-  a {
-    color: #222;
-    text-decoration: none;
-    margin: 15px 0;
-    font-size: 1rem;
+    margin: 16px 0 24px;
   }
   button {
-    border-radius: 20px;
-    border: 1px solid #930000;
-    background-color: #930000;
+    border-radius: 16px;
+    border: 1px solid #009300;
+    background-color: #009300;
     color: #fff;
     font-size: 1rem;
     font-weight: bold;
-    padding: 10px 40px;
+    padding: 8px 32px;
     letter-spacing: 1px;
     text-transform: uppercase;
     cursor: pointer;
@@ -232,7 +229,7 @@ export default {
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
-    padding: 90px 60px;
+    padding: 72px 48px;
     width: calc(50%);
     height: calc(100%);
     text-align: center;
@@ -246,10 +243,10 @@ export default {
     input {
       background-color: #eee;
       border: none;
-      padding: 8px 15px;
+      padding: 6px 12px;
       margin: 6px 0;
       width: calc(100%);
-      border-radius: 15px;
+      border-radius: 12px;
       border-bottom: 1px solid #ddd;
       box-shadow: inset 0 1px 2px rgba(0, 0, 0, .4),
                         0 -1px 1px #fff,
@@ -308,13 +305,13 @@ export default {
     }
   }
   .welcomeContainer {
-    width: 384px;
-    height: 240px;
+    width: 307px;
+    height: 192px;
     color: #fff;
-    background: linear-gradient(to top right, rgb(247, 93, 93), #930000);
+    background: linear-gradient(to top right, rgb(111, 247, 93), #009300);
      font-size: 1rem;
     font-weight: bold;
-    padding: 10px 40px;
+    padding: 8px 32px;
     letter-spacing: 1px;
     text-transform: uppercase;
   }
@@ -322,7 +319,7 @@ export default {
     width: 400px;
     height: 400px;
     color: #fff;
-    background: linear-gradient(to top right, rgb(247, 93, 93), #930000);
+    background: linear-gradient(to top right, rgb(111, 247, 93), #009300);
      font-size: 1rem;
     font-weight: bold;
     padding: 10px 40px;

@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar dark style="background-color:#930000" app>
+    <v-app-bar dark style="background-color:#009300" app>
       <v-toolbar-title  class="headline text-uppercase">
         <span>projet web 4afsi2 ignite</span></v-toolbar-title>
       <v-spacer></v-spacer>
@@ -25,3 +25,10 @@ export default {
   })
 }
 </script>
+
+<style scoped>
+  main {
+    background-image: url('http://www.cartoonswallpapers.net/wallpapers/dragon-ball-z-wallpaper-iphone-6.jpg');
+    background-size: cover
+  }
+</style>
