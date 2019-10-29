@@ -1,10 +1,3 @@
-/**
- *
- * entrez la commande suivante:
- * npm install --save express express-session body-parser morgan cors
- * puis node server.js
- * exemple complet à l'adresse https://github.com/Musinux/first-vue-app
- */
 const express = require('express')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
@@ -14,10 +7,10 @@ const session = require('express-session')
 const app = express()
 
 app.use(session({
-  secret: 'blablabla', // changez cette valeur
+  secret: 'Issam&Tom',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false } // ne changez que si vous avez activé le https
+  cookie: { secure: false }
 }))
 app.use(morgan('dev'))
 app.use(bodyParser.json())
@@ -29,19 +22,6 @@ const users = [{
   username: 'admin',
   password: 'admin'
 }]
-
-app.get('/api/test', (req, res) => {
-  console.log('ce console.log est appelé au bon moment')
-  res.json([
-    {
-      title: 'truc',
-      content: 'machin'
-    }, {
-      title: 'truc2',
-      content: 'machin2'
-    }
-  ])
-})
 
 app.post('/api/login', (req, res) => {
   console.log('req.body', req.body)

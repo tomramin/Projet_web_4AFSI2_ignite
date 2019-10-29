@@ -22,6 +22,7 @@
             <h2>Create login</h2>
             <input v-model="name" placeholder="Name" />
             <input v-model="password" type="password" placeholder="Password" />
+            <br>
             <button @click="inscription">Sign Up</button>
           </form>
           <form class="sign-in" action="#">
@@ -29,6 +30,7 @@
             <div>Use your account</div>
             <input v-model="name" placeholder="Name" />
             <input v-model="password" type="password" placeholder="Password" />
+            <br>
             <button @click="login">Sign In</button>
           </form>
       </v-container>
@@ -63,6 +65,7 @@
         <div v-if="index === 5">
           <p> Merci d'avoir joué </p>
           <p> Votre score est de: {{score}} </p>
+          <img id="beerus" src="../assets/beerus2.png">
         </div>
       </v-container>
     </v-content>
@@ -333,5 +336,9 @@ export default {
   #img2 {
     max-width: 70%;
     max-height: 70%;
+  }
+  #beerus {
+    max-width: 100%;
+    max-height: 100%;
   }
 </style>
