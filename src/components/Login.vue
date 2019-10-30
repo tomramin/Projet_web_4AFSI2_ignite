@@ -1,76 +1,77 @@
 <template>
-  <article>
-    <v-content>
-      <v-container v-if="!connected" class="container" :class="{'sign-up-active' : signUp}">
-          <div class="overlay-container">
-            <div class="overlay">
-              <div class="overlay-left">
-                <img id="img1" src="../assets/MajinVegeta.png">
-                <h2>Welcome Back!</h2>
-                <p>Please login with your personal info</p>
-                <button class="invert" id="signIn" @click="signUp = !signUp">Sign In</button>
-              </div>
-              <div class="overlay-right">
-                <img id="img2" src="../assets/gokuUI.png">
-                <h2>Hello, Friend!</h2>
-                <p>Please enter your personal details</p>
-                <button class="invert" id="signUp" @click="signUp = !signUp">Sign Up</button>
+  <v-app style="background: url(http://www.cartoonswallpapers.net/wallpapers/dragon-ball-z-wallpaper-iphone-6.jpg)">
+    <article>
+      <v-content>
+        <v-container v-if="!connected" class="container" :class="{'sign-up-active' : signUp}">
+            <div class="overlay-container">
+              <div class="overlay">
+                <div class="overlay-left">
+                  <img id="img1" src="../assets/MajinVegeta.png">
+                  <h2>Welcome Back!</h2>
+                  <p>Please login with your personal info</p>
+                  <button class="invert" id="signIn" @click="signUp = !signUp">Sign In</button>
+                </div>
+                <div class="overlay-right">
+                  <img id="img2" src="../assets/gokuUI.png">
+                  <h2>Hello, Friend!</h2>
+                  <p>Please enter your personal details</p>
+                  <button class="invert" id="signUp" @click="signUp = !signUp">Sign Up</button>
+                </div>
               </div>
             </div>
+            <form class="sign-up" action="#">
+              <h2>Create login</h2>
+              <input v-model="name" placeholder="Name" />
+              <input v-model="password" type="password" placeholder="Password" />
+              <br>
+              <button @click="inscription">Sign Up</button>
+            </form>
+            <form class="sign-in" action="#">
+              <h2>Sign In</h2>
+              <div>Use your account</div>
+              <input v-model="name" placeholder="Name" />
+              <input v-model="password" type="password" placeholder="Password" />
+              <br>
+              <button @click="login">Sign In</button>
+            </form>
+        </v-container>
+      </v-content>
+
+      <v-content>
+        <v-btn class="logout_btn" @click="logout" v-if="connected">Log Out</v-btn>
+        <v-container class="welcomeContainer" text-center v-if="connected && !playing" >
+          <p>Bienvenue {{name}}</p>
+          <p>Cliquez pour jouer</p>
+          <button @click="play">JOUER</button>
+        </v-container>
+      </v-content>
+
+      <v-content>
+        <v-container class="playContainer" text-center v-if="playing">
+          <div v-if="index >= 0 && index < jeu.length">
+            <br>
+            <h1> {{jeu[index].question}} </h1>
+            <br>
+            <ol>
+              <li> {{jeu[index].reponses[0]}} </li>
+              <li> {{jeu[index].reponses[1]}} </li>
+              <li> {{jeu[index].reponses[2]}} </li>
+            </ol>
+            <br>
           </div>
-          <form class="sign-up" action="#">
-            <h2>Create login</h2>
-            <input v-model="name" placeholder="Name" />
-            <input v-model="password" type="password" placeholder="Password" />
-            <br>
-            <button @click="inscription">Sign Up</button>
-          </form>
-          <form class="sign-in" action="#">
-            <h2>Sign In</h2>
-            <div>Use your account</div>
-            <input v-model="name" placeholder="Name" />
-            <input v-model="password" type="password" placeholder="Password" />
-            <br>
-            <button @click="login">Sign In</button>
-          </form>
-      </v-container>
-    </v-content>
-
-    <v-content>
-      <v-btn class="logout_btn" @click="logout" v-if="connected">Log Out</v-btn>
-      <v-container class="welcomeContainer" text-center v-if="connected && !playing" >
-        <p>Bienvenue {{name}}</p>
-        <p>Cliquez pour jouer</p>
-        <button @click="play">JOUER</button>
-      </v-container>
-    </v-content>
-
-    <v-content>
-      <v-container class="playContainer" text-center v-if="playing">
-        <div v-if="index >= 0 && index < jeu.length">
-          <br>
-          <h1> {{jeu[index].question}} </h1>
-          <br>
-          <ol>
-            <li> {{jeu[index].reponses[0]}} </li>
-            <li> {{jeu[index].reponses[1]}} </li>
-            <li> {{jeu[index].reponses[2]}} </li>
-          </ol>
-          <br>
-        </div>
-        <input v-if="index < jeu.length" v-model="choix" placeholder=" Indice de votre réponse">
-        <div><br></div>
-        <button v-if="(index+1) < jeu.length" @click="questionSuivante"> VALIDER </button>
-        <button v-if="(index+1) === jeu.length" @click="questionSuivante"> FIN </button>
-        <div v-if="index === 5">
-          <p> Merci d'avoir joué </p>
-          <p> Votre score est de: {{score}} </p>
-          <img id="beerus" src="../assets/beerus2.png">
-        </div>
-      </v-container>
-    </v-content>
-
-  </article>
+          <input v-if="index < jeu.length" v-model="choix" placeholder=" Indice de votre réponse">
+          <div><br></div>
+          <button v-if="(index+1) < jeu.length" @click="questionSuivante"> VALIDER </button>
+          <button v-if="(index+1) === jeu.length" @click="questionSuivante"> FIN </button>
+          <div v-if="index === 5">
+            <p> Merci d'avoir joué </p>
+            <p> Votre score est de: {{score}} </p>
+            <img id="beerus" src="../assets/beerus2.png">
+          </div>
+        </v-container>
+      </v-content>
+    </article>
+  </v-app>
 </template>
 
 <script>
@@ -144,7 +145,6 @@ export default {
 
 <style lang="scss" scoped>
   .container {
-    opacity: 97%;
     margin-top: 5%;
     position: relative;
     width: 614px;
