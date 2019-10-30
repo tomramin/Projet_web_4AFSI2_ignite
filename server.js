@@ -12,6 +12,12 @@ app.use(session({
   saveUninitialized: true,
   cookie: { secure: false }
 }))
+
+app.use(cors({
+  credentials: true,
+  origin: 'http://localhost:8080'
+}))
+
 app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(cors())
