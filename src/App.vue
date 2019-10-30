@@ -25,10 +25,3 @@ export default {
   })
 }
 </script>
-
-<style scoped>
-  main {
-    background-image: url('http://www.cartoonswallpapers.net/wallpapers/dragon-ball-z-wallpaper-iphone-6.jpg');
-    background-size: cover
-  }
-</style>
