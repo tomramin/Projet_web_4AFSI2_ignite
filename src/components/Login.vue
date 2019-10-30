@@ -81,7 +81,7 @@ export default {
     playing: false,
     name: '',
     password: '',
-    server: 'http://localhost:4000/',
+    server: '', // 'http://localhost:4000/',
     index: 0,
     score: 0,
     choix: null,
